@@ -7,7 +7,7 @@ export async function POST(request: Request) {
   const filepath = process.cwd() + "/public/info.json";
   let currentJson = JSON.parse(readFileSync(filepath).toString()) as Array<any>;
 
-  const recData = decodeURI(atob(data.info));
+  const recData = JSON.parse(decodeURI(atob(data.info)));
 
   const toSaveData = {
     headers: Array.from(request.headers.entries()),
